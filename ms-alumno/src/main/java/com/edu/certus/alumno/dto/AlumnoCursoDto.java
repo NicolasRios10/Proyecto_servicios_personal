@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlumnoCursoDto {
+	private Long id;
 	private Long idAlumno;
 	private String nombreAlumno;
 	private Boolean estadoAlumno;

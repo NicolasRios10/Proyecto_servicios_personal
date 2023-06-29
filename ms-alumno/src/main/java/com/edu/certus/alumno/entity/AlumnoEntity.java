@@ -35,8 +35,8 @@ public class AlumnoEntity {
 	private String sexo;
 	@Column(name = "estado")
 	private Boolean estado;
-	
-	@JoinColumn(name = "id_alumno", referencedColumnName = "cod_alumno", insertable = false, updatable = false)
+
+	@JoinColumn(name = "id_alumno", referencedColumnName = "id_alumno_curso", insertable = false, updatable = false)
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	private AlumnoCursoEntity alumnoCursoEntity;
 }

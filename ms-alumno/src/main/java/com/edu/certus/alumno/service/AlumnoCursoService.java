@@ -7,5 +7,7 @@ public interface AlumnoCursoService {
 
 	public ResponseDto getAllAlumnoCurso();
 	public ResponseDto getAlumnoCurso(Long id);
+
 	public ResponseDto createAlumnoCurso(AlumnoCursoDto alumnoCursoDto);
+	public ResponseDto updateAlumnoCurso(AlumnoCursoDto alumnoCursoDto);
 }

@@ -11,6 +11,7 @@
         <module name="ms-curso" />
         <module name="ms-discovery" />
         <module name="ms-profesor" />
+        <module name="ms-gateway" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +20,7 @@
       <module name="ms-alumno" options="-parameters" />
       <module name="ms-curso" options="-parameters" />
       <module name="ms-discovery" options="-parameters" />
+      <module name="ms-gateway" options="-parameters" />
       <module name="ms-profesor" options="-parameters" />
     </option>
   </component>

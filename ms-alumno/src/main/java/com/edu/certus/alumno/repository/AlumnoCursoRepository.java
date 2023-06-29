@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.edu.certus.alumno.entity.AlumnoCursoEntity;
 
+import java.util.List;
+
 @Repository
 public interface AlumnoCursoRepository extends JpaRepository<AlumnoCursoEntity, Long>{
-	AlumnoCursoEntity findByIdAlumno(Long id);
+	List<AlumnoCursoEntity> findByIdAlumno(Long idAlumno);
 }
