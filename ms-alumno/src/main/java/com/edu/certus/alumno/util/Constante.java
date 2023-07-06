@@ -8,4 +8,5 @@ public class Constante {
 	public static final String OPERATION_FAILED = "Operación fallida";
 	public static final String NO_RECORDS_FOUND = "No se encontraron registros";
 	public static final String NO_SERVICE_AVIABLE = "El servicio no se encuentra disponible";
+	public static final String DATA_EXIST = "La union ya existe";
 }
