@@ -9,6 +9,4 @@ public interface CursoService {
 	public ResponseDto createCurso(CursoDto curso);
 	public ResponseDto updateCurso(CursoDto curso);
 	public ResponseDto deteleCurso(Long id);
-
-	public ResponseDto getAllProfesorCurso();
 }
