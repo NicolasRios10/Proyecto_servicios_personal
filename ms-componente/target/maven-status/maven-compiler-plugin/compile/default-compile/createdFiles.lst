@@ -1,0 +1,4 @@
+com\edu\certus\componente\service\ComponenteService.class
+com\edu\certus\componente\service\impl\ComponenteServiceImpl.class
+com\edu\certus\componente\controller\ComponenteController.class
+com\edu\certus\componente\MsComponenteApplication.class
