@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.edu.certus</groupId>
 	<artifactId>ms-curso</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>ms-curso</name>
 	<description>MicroServicio Curso</description>
 	<properties>
@@ -27,8 +27,17 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+	      <groupId>org.springframework.cloud</groupId>
+	      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+	    </dependency>
+
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
 
 		<dependency>
@@ -42,6 +51,13 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -52,32 +68,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.10.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
 	</dependencies>
+
 	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+	    <dependencies>
+	      <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-dependencies</artifactId>
+	        <version>${spring-cloud.version}</version>
+	        <type>pom</type>
+	        <scope>import</scope>
+	      </dependency>
+	    </dependencies>
+	  </dependencyManagement>
 
 	<build>
 		<plugins>

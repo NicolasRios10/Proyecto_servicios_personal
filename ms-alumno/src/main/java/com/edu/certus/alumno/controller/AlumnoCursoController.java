@@ -37,4 +37,9 @@ public class AlumnoCursoController {
 	public ResponseEntity<ResponseDto> updateAlumnoCurso(@RequestBody AlumnoCursoDto alumnoCursoDto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(alumnoCursoService.updateAlumnoCurso(alumnoCursoDto));
 	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ResponseDto> deleteAlumnoCurso(@PathVariable("id") Long id){
+		return ResponseEntity.status(HttpStatus.OK).body(alumnoCursoService.deleteAlumnoCurso(id));
+	}
 }

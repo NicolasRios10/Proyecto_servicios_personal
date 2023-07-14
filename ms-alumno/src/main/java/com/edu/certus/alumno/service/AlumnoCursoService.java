@@ -10,4 +10,5 @@ public interface AlumnoCursoService {
 
 	public ResponseDto createAlumnoCurso(AlumnoCursoDto alumnoCursoDto);
 	public ResponseDto updateAlumnoCurso(AlumnoCursoDto alumnoCursoDto);
+	public ResponseDto deleteAlumnoCurso(Long id);
 }

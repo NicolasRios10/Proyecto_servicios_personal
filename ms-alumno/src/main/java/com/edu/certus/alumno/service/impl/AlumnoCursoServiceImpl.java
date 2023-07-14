@@ -2,6 +2,7 @@ package com.edu.certus.alumno.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -104,11 +105,17 @@ public class AlumnoCursoServiceImpl implements AlumnoCursoService {
 	@Override
 	public ResponseDto createAlumnoCurso(AlumnoCursoDto alumnoCursoDto) {
 		try {
+			boolean unionExiste = checkUnionExists(alumnoCursoDto);
+			if (!unionExiste) {
+				return Util.getResponse(false, Constante.DATA_EXIST, null);
+			}
+
 			AlumnoCursoEntity alumnoCursoEntity = AlumnoCursoEntity.builder()
 					.idAlumno(alumnoCursoDto.getIdAlumno())
 					.idCurso(alumnoCursoDto.getIdCurso())
 					.build();
 			alumnoCursoRepository.save(alumnoCursoEntity);
+
 			return Util.getResponse(true, Constante.OPERATION_SUCCESS, null);
 		} catch (Exception e) {
 			log.error(Constante.OPERATION_FAILED, e);
@@ -119,13 +126,19 @@ public class AlumnoCursoServiceImpl implements AlumnoCursoService {
 	@Override
 	public ResponseDto updateAlumnoCurso(AlumnoCursoDto alumnoCursoDto) {
 		try {
+			boolean unionExiste = checkUnionExists(alumnoCursoDto);
+			if (!unionExiste) {
+				return Util.getResponse(false, Constante.DATA_EXIST, null);
+			}
+
 			AlumnoCursoEntity alumnoCursoEntity = alumnoCursoRepository.findById(alumnoCursoDto.getId()).orElse(null);
-			if(alumnoCursoEntity == null) {
+			if (alumnoCursoEntity == null) {
 				return Util.getResponse(true, Constante.NO_RECORDS_FOUND, null);
 			}
 			alumnoCursoEntity.setIdAlumno(alumnoCursoDto.getIdAlumno());
 			alumnoCursoEntity.setIdCurso(alumnoCursoDto.getIdCurso());
 			alumnoCursoRepository.save(alumnoCursoEntity);
+
 			return Util.getResponse(true, Constante.OPERATION_SUCCESS, null);
 		} catch (Exception e) {
 			log.error(Constante.OPERATION_FAILED, e);
@@ -133,7 +146,38 @@ public class AlumnoCursoServiceImpl implements AlumnoCursoService {
 		}
 	}
 
-	
+	private boolean checkUnionExists(AlumnoCursoDto alumnoCursoDto) {
+		ObjectMapper mapper = new ObjectMapper();
+		List<AlumnoCursoEntity> listAlumnoCursoEntity = alumnoCursoRepository.findAll();
+
+		for (AlumnoCursoEntity entity : listAlumnoCursoEntity) {
+			AlumnoEntity alumnoEntity = alumnoRepository.findById(entity.getIdAlumno()).orElse(null);
+			ResponseDto responseDto = cursoClient.readCurso(entity.getIdCurso());
+			CursoDto cursoDto = mapper.convertValue(responseDto.getData(), CursoDto.class);
+
+			if (alumnoEntity.getId() == alumnoCursoDto.getIdAlumno() && cursoDto.getId() == alumnoCursoDto.getIdCurso()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	@Override
+	public ResponseDto deleteAlumnoCurso(Long id) {
+		try {
+			AlumnoCursoEntity alumnoCursoEntity = alumnoCursoRepository.findById(id).orElse(null);
+			if (alumnoCursoEntity != null) {
+				alumnoCursoRepository.delete(alumnoCursoEntity);
+				return Util.getResponse(true, Constante.OPERATION_SUCCESS, null);
+			} else {
+				return Util.getResponse(false, Constante.NO_RECORDS_FOUND,null);
+			}
+		} catch (Exception e) {
+			log.error(Constante.OPERATION_FAILED, e);
+			return Util.getResponse(false, Constante.OPERATION_FAILED, null);
+		}
+	}
 	
 	
 	

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.edu.certus</groupId>
 	<artifactId>ms-discovery</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>ms-discovery</name>
 	<description>Microservicio Discovery</description>
 	<properties>
@@ -22,6 +22,8 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

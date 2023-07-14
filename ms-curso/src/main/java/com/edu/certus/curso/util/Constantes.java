@@ -7,5 +7,5 @@ public class Constantes {
 	public static final String OPERATION_SUCCESS = "Operación exitosa";
 	public static final String OPERATION_FAILED = "Operacion fallida";
 	public static final String NO_RECORDS_ROUND = "No se encontraron registros";
-	public static final String NO_SERVICE_AVAILABLE = "El servicio no se encuentra disponible";
+
 }

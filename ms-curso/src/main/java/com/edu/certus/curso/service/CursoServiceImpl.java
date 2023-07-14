@@ -3,8 +3,6 @@ package com.edu.certus.curso.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.edu.certus.curso.client.ProfesorClient;
-import com.edu.certus.curso.dto.ProfesorResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +21,7 @@ public class CursoServiceImpl implements CursoService{
 	
 	@Autowired
 	private CursoRepository cursoRepository;
-
-	@Autowired
-	private ProfesorClient profesorClient;
-
+	
 	@Override
 	public ResponseDto getAllCurso() {
 		try {
@@ -105,26 +100,4 @@ public class CursoServiceImpl implements CursoService{
 			return Util.getResponse(false, Constantes.OPERATION_FAILED, null);
 		}
 	}
-
-
-	@Override
-	public ResponseDto getAllProfesorCurso() {
-		List<CursoEntity> listCursoEntity = cursoRepository.findAll();
-		ResponseDto responseDto = profesorClient.readAllProfesor();
-
-		List<CursoDto> listCurso = new ArrayList<CursoDto>();
-		for (CursoEntity cursoEntity : listCursoEntity) {
-			listCurso.add(CursoDto.builder()
-					.id(cursoEntity.getId())
-					.descripcion(cursoEntity.getDescripcion())
-					.estado(cursoEntity.getEstado())
-					.build());
-		}
-		ProfesorResponseDto profesorDto = ProfesorResponseDto.builder()
-				.curso(listCurso)
-				.profesor(responseDto.getData())
-				.build();
-		return Util.getResponse(true, Constantes.OPERATION_SUCCESS, profesorDto);
-	}
-
 }

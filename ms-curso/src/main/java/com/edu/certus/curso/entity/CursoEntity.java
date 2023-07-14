@@ -1,6 +1,11 @@
 package com.edu.certus.curso.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,8 +27,4 @@ public class CursoEntity {
 	private String descripcion;
 	@Column(name = "estado")
 	private Boolean estado ;
-
-	@JoinColumn(name = "id_curso", referencedColumnName = "cod_curso", insertable = false, updatable = false)
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	private CursoProfesorEntity cursoProfesorEntity;
 }

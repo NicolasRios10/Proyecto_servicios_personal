@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ms-alumno" />
+        <module name="ms-config-server" />
+        <module name="ms-componente" />
         <module name="ms-curso" />
         <module name="ms-discovery" />
         <module name="ms-profesor" />
+        <module name="ms-alumno" />
         <module name="ms-gateway" />
       </profile>
     </annotationProcessing>
@@ -22,6 +24,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ms-alumno" options="-parameters" />
+      <module name="ms-componente" options="-parameters" />
+      <module name="ms-config-server" options="-parameters" />
       <module name="ms-curso" options="-parameters" />
       <module name="ms-discovery" options="-parameters" />
       <module name="ms-gateway" options="-parameters" />
